@@ -1,0 +1,213 @@
+openapi: 3.0.3
+info:
+  title: Snake Game API
+  version: 1.0.0
+  description: API for authentication, leaderboard, and game management for the Snake game frontend.
+servers:
+  - url: http://localhost:8000
+paths:
+  /login:
+    post:
+      summary: User login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+                - username
+                - password
+      responses:
+        '200':
+          description: Login result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  token:
+                    type: string
+                  username:
+                    type: string
+                  error:
+                    type: string
+  /signup:
+    post:
+      summary: User signup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+                - username
+                - password
+      responses:
+        '200':
+          description: Signup result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  error:
+                    type: string
+  /user:
+    get:
+      summary: Get user info
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: User info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+  /logout:
+    post:
+      summary: Logout user
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Logout result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+  /leaderboard:
+    get:
+      summary: Get leaderboard
+      responses:
+        '200':
+          description: Leaderboard list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                    score:
+                      type: integer
+    post:
+      summary: Submit score
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                score:
+                  type: integer
+              required:
+                - username
+                - score
+      responses:
+        '200':
+          description: Score submission result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+  /games:
+    get:
+      summary: Get active games
+      responses:
+        '200':
+          description: List of active games
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    username:
+                      type: string
+                    mode:
+                      type: string
+                    state:
+                      type: string
+  /games/{gameId}:
+    get:
+      summary: Get game state
+      parameters:
+        - in: path
+          name: gameId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Game state
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  username:
+                    type: string
+                  mode:
+                    type: string
+                  snake:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        x:
+                          type: integer
+                        y:
+                          type: integer
+                  food:
+                    type: object
+                    properties:
+                      x:
+                        type: integer
+                      y:
+                        type: integer
+                  score:
+                    type: integer
