@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Environment & Secrets
+.env
+.env.*
+*.env
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node/npm (if ever used)
+node_modules/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Backup
+*~
+*.bak
+
+# Misc
+*.swp
+*.swo
+
+# Project-specific
+backend/opportunity.db
+backend/.env
+frontend/.env
+frontend/opportunity.db

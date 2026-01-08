@@ -15,4 +15,5 @@ dependencies = [
 [tool.uv.workspace]
 members = [
     "02-end-to-end/backend",
+    "Project Attempt 1",
 ]
