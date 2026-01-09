@@ -13,8 +13,9 @@ This guide provides step-by-step instructions to set up, run, test, and deploy t
 
 ## 2. Clone the Repository
 ```sh
-git clone <your-repo-url>
-cd <project-root>
+git clone https://github.com/himanshujohn/ai-dev-tools-zoomcamp.git
+cd "ai-dev-tools-zoomcamp"
+cd "Project Attempt 1"
 ```
 
 ---
